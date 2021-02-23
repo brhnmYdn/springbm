@@ -53,7 +53,10 @@ public class UserServiceImpl implements UserService {
         try {
             userRepository.delete(userEntity);
             resultResponse.setOperationResult("Deleted");
+            LOGGER.info("Deleted User" + userEntity.getId());
         }catch (Exception ex){
+            LOGGER.error("Exception on deleting user, " + ex
+            .getMessage());
             resultResponse.setOperationResult("UnDeleted");
         }
         return  resultResponse;
